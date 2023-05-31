@@ -16,6 +16,14 @@ async function getUserById(pUserId) {
   }
 }
 
+async function getUserByEmail(pEmail) {
+  try {
+    return await User.findOne({ where: { email:pEmail } });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function createUser(pUser) {
   try {
     return await User.create(pUser);
@@ -40,4 +48,4 @@ async function deleteUserById(pUserId) {
   }
 }
 
-export { getUserById, createUser, changeUserInfo, deleteUserById, getAllUsers };
+export { getUserById, createUser, changeUserInfo, deleteUserById, getAllUsers, getUserByEmail };

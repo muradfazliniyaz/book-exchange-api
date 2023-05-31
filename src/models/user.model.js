@@ -39,6 +39,10 @@ const User = sequelize.define(
       type: DataTypes.STRING(50),
       allowNull: false,
     },
+    role: {
+      type: DataTypes.STRING(10),
+      allowNull: false,
+    },
   },
   {
     tableName: "users",
