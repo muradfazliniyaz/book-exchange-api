@@ -16,6 +16,14 @@ async function getBookById(pBookId) {
   }
 }
 
+async function getBookByUserId(pBookByUserId) {
+  try {
+    return await Book.findAll({ where: { userId:pBookByUserId } });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function createBook(pBook) {
   try {
     return await Book.create(pBook);
@@ -40,4 +48,4 @@ async function deleteBookById(pBookId) {
   }
 }
 
-export { getAllBooks, getBookById, createBook, changeBookInfo, deleteBookById };
+export { getAllBooks, getBookById, getBookByUserId, createBook, changeBookInfo, deleteBookById };

@@ -1,5 +1,6 @@
-import { Sequelize, DataTypes } from "sequelize";
+import { DataTypes } from "sequelize";
 import sequelize from "../common/sequelize.js";
+import User from "./user.model.js" 
 
 const Book = sequelize.define(
   "Book",
@@ -29,10 +30,18 @@ const Book = sequelize.define(
       type: DataTypes.STRING(5000),
       allowNull: false,
     },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: null
+    },
   },
   {
     tableName: "books",
   }
 );
+
+User.hasMany(Book, { foreignKey: "userId", onDelete: "CASCADE"  });
+Book.belongsTo(User, { foreignKey: "userId" });
 
 export default Book;

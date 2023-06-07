@@ -21,7 +21,7 @@ const User = sequelize.define(
     email: {
       type: DataTypes.STRING(50),
       allowNull: false,
-      unique: true,
+      unique: false,
     },
     gender: {
       type: DataTypes.STRING(10),
