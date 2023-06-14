@@ -33,7 +33,7 @@ const Book = sequelize.define(
     userId: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: null
+      defaultValue: null,
     },
   },
   {
