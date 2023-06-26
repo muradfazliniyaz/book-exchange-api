@@ -32,9 +32,9 @@ async function createUser(pUser) {
   }
 }
 
-async function changeUserInfo(pUserId, aUser) {
+async function changeUserInfo(pUserId, pUser) {
   try {
-    return await User.update(aUser, { where: { id:pUserId } });
+    return await User.update(pUser, { where: { id:pUserId } });
   } catch (error) {
     console.log(error);
   }
