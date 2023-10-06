@@ -35,6 +35,11 @@ const Book = sequelize.define(
       allowNull: true,
       defaultValue: null,
     },
+    requestedBy: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: null,
+    },
   },
   {
     tableName: "books",

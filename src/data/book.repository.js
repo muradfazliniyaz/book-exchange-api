@@ -8,6 +8,14 @@ async function getAllBooks() {
   }
 }
 
+async function getRequestedBooks(userId) {
+  try {
+    return await Book.findAll({ where: { requestedBy:userId } });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function getBookById(pBookId) {
   try {
     return await Book.findOne({ where: { id:pBookId } });
@@ -48,4 +56,14 @@ async function deleteBookById(pBookId) {
   }
 }
 
-export { getAllBooks, getBookById, getBookByUserId, createBook, changeBookInfo, deleteBookById };
+async function setRequestedBy(bookId, userId) {
+  try {
+    const book = Book.findOne({ where: { id:bookId } });
+    return await Book.update({requestedBy:userId }, { where: { id:bookId } });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export { getAllBooks, getBookById, getBookByUserId, createBook, changeBookInfo, deleteBookById, setRequestedBy, getRequestedBooks };

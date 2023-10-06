@@ -8,13 +8,29 @@ import {
   createBook,
   changeBookInfo,
   deleteBookById,
+  setRequestedBy,
+  getRequestedBooks,
 } from "../data/book.repository.js";
 
 
 // ReST API Definition - Endpoints
-router.get("/books", async (reqest, response) => {
+router.get("/books", async (request, response) => {
   const allBooks = await getAllBooks();
   response.json(allBooks);
+});
+
+router.get("/requestedBooks/:id", async (request, response) => {
+  const userId = request.params.id;
+  console.log(userId)
+  const allBooks = await getRequestedBooks(userId);
+  response.json(allBooks);
+});
+
+router.put("/books/:bookId/:userId", async (request, response) => {
+  const bookId = request.params.bookId;
+  const userId = request.params.userId;
+  await setRequestedBy(bookId, userId);
+  response.status(200).json();
 });
 
 // // ReST API Definition - Endpoints Kullanıcıya göre kitap çekme
