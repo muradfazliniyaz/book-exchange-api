@@ -10,6 +10,7 @@ import {
   deleteBookById,
   setRequestedBy,
   getRequestedBooks,
+  getRequestedBooksFromMe,
 } from "../data/book.repository.js";
 
 
@@ -21,8 +22,13 @@ router.get("/books", async (request, response) => {
 
 router.get("/requestedBooks/:id", async (request, response) => {
   const userId = request.params.id;
-  console.log(userId)
   const allBooks = await getRequestedBooks(userId);
+  response.json(allBooks);
+});
+
+router.get("/requestedBooksFromMe/:id", async (request, response) => {
+  const userId = request.params.id;
+  const allBooks = await getRequestedBooksFromMe(userId);
   response.json(allBooks);
 });
 
