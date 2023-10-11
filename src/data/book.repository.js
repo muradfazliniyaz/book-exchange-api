@@ -1,6 +1,5 @@
 import Book from "../models/book.model.js";
-import sequelize from "../common/sequelize.js";
-
+import { Sequelize } from "sequelize";
 
 async function getAllBooks() {
   try {
@@ -21,7 +20,7 @@ async function getRequestedBooks(userId) {
 async function getRequestedBooksFromMe(userId) {
   try {
     return await Book.findAll({ where: { userId:userId, requestedBy:{
-      [sequelize.Sequelize.Op.not]: null,
+      [Sequelize.Op.not]: null,
     },}});
   } catch (error) {
     console.log(error);
